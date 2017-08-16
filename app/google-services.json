@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "442878471574",
+    "firebase_url": "https://iota-11d7a.firebaseio.com",
+    "project_id": "iota-11d7a",
+    "storage_bucket": "iota-11d7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442878471574:android:458875cea15f4c2c",
+        "android_client_info": {
+          "package_name": "mjhub_media.iota"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442878471574-vchh63fugoeicstvgtj36na0q5q4d0ru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL8Lced4F0bOrg_ZTQKTRoLhNChmG2hcg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

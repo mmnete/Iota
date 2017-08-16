@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mjhub_media.iota.search">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="-1dp">
+
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:id="@+id/searchView"
+            android:background="#ffffff"
+            android:contentDescription="@string/playlist_searchView_description"/>
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:id="@+id/playlistView"
+            android:contentDescription="@string/playlist_plyalistView_description"
+            />
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:id="@+id/songView"
+            android:contentDescription="@string/playlist_songView_description"
+            />
+        <ImageButton
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:id="@+id/userView"
+            android:background="#ffffff"
+            android:contentDescription="@string/playlist_userView_description"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/currFrag"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_query"
+        android:hint="Search"
+        android:layout_below="@+id/currFrag"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go"
+        android:onClick="search"
+        android:id="@+id/search"
+        android:layout_alignTop="@+id/search_query"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/search_query"
+        android:layout_toEndOf="@+id/search_query" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_to_play_a_playlist"
+        android:id="@+id/textView14"
+        android:layout_below="@+id/search"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resultListView"
+        android:layout_below="@+id/textView14"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
