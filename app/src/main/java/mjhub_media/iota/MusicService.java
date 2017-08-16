@@ -14,8 +14,6 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
 
 import java.util.Random;
 
@@ -160,34 +158,6 @@ public class MusicService extends Service implements
         mRunning = true;
 
 
-
-        PhoneStateListener phoneStateListener = new PhoneStateListener() {
-            @Override
-            public void onCallStateChanged(int state, String incomingNumber) {
-                if (state == TelephonyManager.CALL_STATE_RINGING) {
-                    //Incoming call: Pause music
-                    if(player != null){
-                        if(player.isPlaying()){
-                            player.pause();
-                        }
-                    }
-                } else if(state == TelephonyManager.CALL_STATE_IDLE) {
-                    //Not in call: Play music
-                } else if(state == TelephonyManager.CALL_STATE_OFFHOOK) {
-                    //A call is dialing, active or on hold
-                    if(player != null){
-                        if(player.isPlaying()){
-                            player.pause();
-                        }
-                    }
-                }
-                super.onCallStateChanged(state, incomingNumber);
-            }
-        };
-        TelephonyManager mgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-        if(mgr != null) {
-            mgr.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-        }
 
 
 
