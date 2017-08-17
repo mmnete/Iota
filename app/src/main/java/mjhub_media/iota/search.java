@@ -335,7 +335,7 @@ public class search extends AppCompatActivity{
 
                                     HttpClient httpClient = new DefaultHttpClient();
 
-                                    HttpPost httpPost = new HttpPost("http://mmnete.000webhostapp.com/search.php");
+                                    HttpPost httpPost = new HttpPost("http://mohamedmnete.com/search.php");
 
                                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
@@ -394,7 +394,7 @@ public class search extends AppCompatActivity{
 
                                                                 HttpClient httpClient1 = new DefaultHttpClient();
 
-                                                                HttpPost httpPost1 = new HttpPost("http://mmnete.000webhostapp.com/load_playlist.php");
+                                                                HttpPost httpPost1 = new HttpPost("http://mohamedmnete.com/load_playlist.php");
 
                                                                 httpPost1.setEntity(new UrlEncodedFormEntity(nameValuePairs1));
 
@@ -502,7 +502,7 @@ public class search extends AppCompatActivity{
                 String[] temp2 = i.split("----kkkkkkkkkkk----");
                 if(temp2.length > 1){
 
-                    SongItem temp3 = new SongItem(100,temp2[1],"Online","http://mmnete.000webhostapp.com/"+temp2[0],true);
+                    SongItem temp3 = new SongItem(100,temp2[1],"Online","http://mohamedmnete.com/"+temp2[0],true);
                     temp.add(temp3);
 
                 }

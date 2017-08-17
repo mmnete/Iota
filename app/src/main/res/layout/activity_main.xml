@@ -29,9 +29,8 @@
         android:text="@string/log_in_text"
         android:id="@+id/logIn_button"
         android:onClick="logInNow"
-        android:layout_below="@+id/logIn_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp" />
+        android:layout_below="@+id/textView19"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -111,6 +110,16 @@
         android:id="@+id/textView18"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="i o t a will need access to your audio files. When asked for this please say yes!"
+        android:id="@+id/textView19"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/logIn_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
 
 
 </RelativeLayout>

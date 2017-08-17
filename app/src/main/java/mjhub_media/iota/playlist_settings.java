@@ -241,6 +241,31 @@ public class playlist_settings extends AppCompatActivity {
     }
 
 
+    public boolean checkMemoryOfAllSongs(){
+
+        Toast.makeText(this,"Checking file sizes...",Toast.LENGTH_LONG).show();
+
+        for(SongItem i: playlist_item.songs){
+
+          if(memory(i.getFilePath()) > 600){
+              return false;
+          }
+
+        }
+
+
+        Toast.makeText(this,"You are good! Starting upload now!",Toast.LENGTH_LONG).show();
+
+        return true;
+    }
+
+    public float memory(String selectedFile){
+        File file = new File(selectedFile);
+        return (float) ((file.length() / 1024.0) / 1024.0);
+    }
+
+
+
 
     public void uploadPlayListName(String playlistName){
 
@@ -256,7 +281,7 @@ public class playlist_settings extends AppCompatActivity {
 
             HttpClient httpClient = new DefaultHttpClient();
 
-            HttpPost httpPost = new HttpPost("http://mmnete.000webhostapp.com/upload_playlist_details.php");
+            HttpPost httpPost = new HttpPost("http://mohamedmnete.com/upload_playlist_details.php");
 
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
@@ -298,7 +323,7 @@ public class playlist_settings extends AppCompatActivity {
 
             HttpClient httpClient = new DefaultHttpClient();
 
-            HttpPost httpPost = new HttpPost("http://mmnete.000webhostapp.com/insert_song.php");
+            HttpPost httpPost = new HttpPost("http://mohamedmnete.com/insert_song.php");
 
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
@@ -359,7 +384,7 @@ public class playlist_settings extends AppCompatActivity {
            }else{
             try{
                 FileInputStream fileInputStream = new FileInputStream(selectedFile);
-               URL url = new URL("http://mmnete.000webhostapp.com/upload_auido_file.php");
+               URL url = new URL("http://mohamedmnete.com/upload_auido_file.php");
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setDoInput(true);//Allow Inputs
                 connection.setDoOutput(true);//Allow Outputs
@@ -412,7 +437,7 @@ public class playlist_settings extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                        @Override
                         public void run() {
-                          Toast.makeText(playlist_settings.this,"Complete "+fileNumber,Toast.LENGTH_LONG).show();
+                          Toast.makeText(playlist_settings.this,"Uploaded "+fileNumber+" / "+playlist_item.songs.size(),Toast.LENGTH_LONG).show();
                            }
                         });
                     }
@@ -582,80 +607,96 @@ Bind and connect to music service
 
         if(!playlist_item.name.equals("default")) {
 
+            if(checkMemoryOfAllSongs()){
 
-            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                //check for memory size
 
-
-
-              progressDialog.show();
-
-
-                Thread tu = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Looper.prepare();
-
-                        uploadPlayListName(playlist_item.name);
-
-                        Looper.loop();
-                    }
-                });
-
-                tu.start();
-
-                if(playlist_item.songs.size() > 0){
+                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
 
 
-                    Thread t = new Thread(new Runnable() {
 
+                    progressDialog.show();
+
+
+                    Thread tu = new Thread(new Runnable() {
                         @Override
-
                         public void run() {
-
                             Looper.prepare();
 
-                            int fileNumber = 1;
-                            for(SongItem i: playlist_item.songs){
+                            uploadPlayListName(playlist_item.name);
 
-                                uploadAudioFile(i.getFilePath(), fileNumber);
-                                fileNumber++;
+                            Looper.loop();
+                        }
+                    });
+
+                    tu.start();
+
+                    if(playlist_item.songs.size() > 0){
+
+
+                        Thread t = new Thread(new Runnable() {
+
+                            @Override
+
+                            public void run() {
+
+                                Looper.prepare();
+
+                                int fileNumber = 1;
+                                for(SongItem i: playlist_item.songs){
+
+                                    uploadAudioFile(i.getFilePath(), fileNumber);
+                                    fileNumber++;
+
+                                }
+
+
+                                Looper.loop();
+
+
+
 
                             }
 
-
-                            Looper.loop();
-
+                        });
 
 
 
-                        }
-
-                    });
+                        t.start();
 
 
 
-                    t.start();
+
+                    }
 
 
 
+                    progressDialog.dismiss();
+
+
+
+
+
+                } else{
+
+                    Toast.makeText(playlist_settings.this,"No Internet Connection",Toast.LENGTH_LONG).show();
 
                 }
 
 
 
-                progressDialog.dismiss();
 
+            }else{
 
-
-
-
-            } else{
-
-                Toast.makeText(playlist_settings.this,"No Internet Connection",Toast.LENGTH_LONG).show();
+                Toast.makeText(playlist_settings.this,"One of your audio files is too big.. limit is 600 MB.",Toast.LENGTH_LONG).show();
 
             }
+
+
+
+
 
 
         }else{

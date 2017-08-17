@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity  {
         password = (EditText) findViewById(R.id.logIn_password);
 
 
+
+
     }
 
 
@@ -107,6 +109,11 @@ public class MainActivity extends AppCompatActivity  {
                      public void onComplete(@NonNull Task<AuthResult> task) {
                        progressDialog.dismiss();
                        if(task.isSuccessful()){
+
+
+
+
+
                            Toast.makeText(MainActivity.this,"Welcome back!",Toast.LENGTH_LONG).show();
                            userJustLoggedIn();
                        }else{

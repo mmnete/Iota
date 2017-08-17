@@ -292,12 +292,25 @@ public class song extends AppCompatActivity {
 
 
 
+
+
+
+
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
+
+
+
+        if(musicSrv != null){
+            if(musicSrv.currSong == null){
+                Intent i = new Intent(this, user.class);
+                startActivity(i);
+            }
+        }
 
 
         int permissionCheck = 0;

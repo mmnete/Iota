@@ -54,7 +54,7 @@
 
     <EditText
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/search_query"
         android:hint="Search"
         android:layout_below="@+id/currFrag"

@@ -123,7 +123,7 @@ public class OnlinePlaylist extends AppCompatActivity {
 
                     HttpClient httpClient = new DefaultHttpClient();
 
-                    HttpPost httpPost = new HttpPost("http://mmnete.000webhostapp.com/fetch_user_onlinePlaylist.php");
+                    HttpPost httpPost = new HttpPost("http://mohamedmnete.com/fetch_user_onlinePlaylist.php");
 
                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
@@ -188,7 +188,7 @@ public class OnlinePlaylist extends AppCompatActivity {
 
                                                 HttpClient httpClient1 = new DefaultHttpClient();
 
-                                                HttpPost httpPost1 = new HttpPost("http://mmnete.000webhostapp.com/load_playlist.php");
+                                                HttpPost httpPost1 = new HttpPost("http://mohamedmnete.com/load_playlist.php");
 
                                                 httpPost1.setEntity(new UrlEncodedFormEntity(nameValuePairs1));
 
